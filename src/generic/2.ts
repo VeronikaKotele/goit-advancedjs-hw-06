@@ -11,7 +11,10 @@ type AllType = {
   weight: number
 }
 
-function compare (top, bottom): AllType {
+function compare (
+  top: Pick<AllType, 'name' | 'color'>,
+  bottom: Pick<AllType, 'position' | 'weight'>
+) : AllType {
   return {
     name: top.name,
     color: top.color,
@@ -19,5 +22,8 @@ function compare (top, bottom): AllType {
     weight: bottom.weight,
   }
 }
+
+const resGood = compare({name: 'me', color: 'red' }, {position: 100, weight: 50});
+//const resBad = compare({name: 'me', position: 100}, {color: 'red', weight: 50});
 
 export {};
